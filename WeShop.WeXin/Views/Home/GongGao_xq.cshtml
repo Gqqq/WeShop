@@ -1,0 +1,34 @@
+﻿@model WeShop.WeXin.Models.HomeViewModel
+@{
+    ViewBag.Title = "公共详情";
+    Layout = "~/Views/_LayoutMaster.cshtml";
+}
+
+<!--ftop开始-->
+<div class="ftop">
+    <a class="back" onClick="javascript:history.back(-1);">
+        <img src="~/Content/images/icon_03.png">
+    </a>
+    <h2>公告详情</h2>
+    <a class="comea">&nbsp;</a>
+    <div style="clear: both;"></div>
+</div>
+<!--ftop开始-->
+<div class="notice noti">
+    @foreach (var notice in Model.Notices)
+    {
+        <div class="notice_xq">
+            <h2>
+                <span>@notice.Title</span><i>2016.03.04</i>
+            </h2>
+
+            <div class="notice_text">
+                @notice.Body
+                @*<br><br><img src="images/img_09.jpg"><img src="images/img_09.jpg"><br>*@
+            </div>
+
+
+        </div>
+    }
+</div>
+    

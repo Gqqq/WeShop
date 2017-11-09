@@ -14,12 +14,12 @@ namespace WeShop.WeXin.Controllers
 
         public IPublishService PublishService { get; set; }
 
-        public ActionResult Index(string laoban="1000")
+        public ActionResult Index(string oneCode = "1000")
         {
             PublishViewModel publishViewModel = new PublishViewModel();
 
             publishViewModel.Sort1 = PublishService.GetEntities(n =>n.UpCode=="A");
-            publishViewModel.Sort2 = PublishService.GetEntities(b =>b.UpCode==laoban);
+            publishViewModel.Sort2 = PublishService.GetEntities(b =>b.UpCode==oneCode);
 
             return View(publishViewModel);
         }

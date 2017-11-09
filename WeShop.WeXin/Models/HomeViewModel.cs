@@ -12,5 +12,6 @@ namespace WeShop.WeXin.Models
         public IEnumerable<Banner> Banners { get; set; }
         public IEnumerable<Notice> Notices { get; set; }
         public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<ShoppingCart> ShoppingCarts { get; set; }
     }
 }

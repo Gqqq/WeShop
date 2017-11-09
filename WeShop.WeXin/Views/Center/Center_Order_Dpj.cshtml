@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "待评价";
+    Layout = "~/Views/_LayoutMaster.cshtml";
+}
+
+<div class="ftop">
+    <a class="back" onClick="javascript:history.back(-1);"><img src="/Content/images/icon_03.png"></a>
+    <h2>商品评价</h2>
+    <a class="comea"></a>
+    <div style="clear: both;"></div>
+</div>
+<!--ftop开始-->
+<!--个人中心-订单评级-->
+<div class="orderpingjia">
+    <div class="goods">
+        <a class="imga" href="product_xq.html"><img src="/Content/images/centerorder_11.png" alt=""></a>
+        <a class="text" href="product_xq.html"><span>正宗广西荔浦芋头新鲜槟榔香芋农家产品有机5斤疯抢</span><i>¥36</i></a>
+    </div>
+    <div class="pingjia">
+        <h2><span>评价</span></h2>
+        <div class="fill">
+            <textarea placeholder="请输入评价内容"></textarea>
+            <div class="imgbox">
+                <a class="imga"><img src="/Content/images/centerorder_11.png" alt="" class="zs"><img src="/Content/images/orderpingjia_03.png" class="close" alt=""></a>
+                <a class="imga"><img src="/Content/images/centerorder_14.png" alt="" class="zs"><img src="/Content/images/orderpingjia_03.png" class="close" alt=""></a>
+                <a class="adda"><img src="/Content/images/orderpingjia_06.png" alt="" class="zs"><input type="file"></a>
+            </div>
+            <div class="score"><span>商品评分</span><em><i></i><i></i><i></i><i></i><i></i></em></div>
+        </div>
+    </div>
+</div>
+<!--个人中心-订单评价-->
+
+<script>
+    $(function(){
+        $(".score em i").hover(function(){
+            var n = $(this).index()+1;
+            $(".score em i").removeClass("on");
+            for(var i=0; i<n; i++){
+                $(".score em i").eq(i).addClass("on");
+            }
+        })
+        $(".imga .close").click(function(){
+            $(this).parents(".imga").hide();
+        })
+    })
+</script>
+

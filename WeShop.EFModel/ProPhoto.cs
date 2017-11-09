@@ -19,7 +19,7 @@ namespace WeShop.EFModel
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int No { get; set; }
 
-        [StringLength(50)]
+        [Column(TypeName = "text")]
         public string ImgUrl { get; set; }
 
         public virtual Product Product { get; set; }

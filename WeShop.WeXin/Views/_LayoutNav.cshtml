@@ -17,17 +17,19 @@
         <i>首页</i>
     </a>
     <a href="#">
-        <a href="@Url.Action("Index","Publish",new {laoban="1000"})" class="current">
+        <a href="@Url.Action("Index","Publish",new {oneCode="1000"})" class="current">
             <span><img src="~/Content/images/navicon_48.png" class="img1"><img src="~/Content/images/navicon_30.png" class="img2"></span>
             <i>分类</i>
         </a>
     <a href="#">
-        <span><img src="~/Content/images/navicon_50.png" class="img1"><img src="~/Content/images/navicon_32.png" class="img2"><em>12</em></span>
-        <i>购物车</i>
-    </a>
+        <a href="@Url.Action("Index","ShoppingCart")" class="current">
+            <span><img src="~/Content/images/navicon_50.png" class="img1"><img src="~/Content/images/navicon_32.png" class="img2"><em>12</em></span>
+            <i>购物车</i>
+        </a>
     <a href="#">
-        <span><img src="~/Content/images/navicon_42.png" class="img1"><img src="~/Content/images/navicon_35.png" class="img2"></span>
-        <i>我的</i>
-    </a>
+        <a href="@Url.Action("Index","Center")" class="current">
+            <span><img src="~/Content/images/navicon_42.png" class="img1"><img src="~/Content/images/navicon_35.png" class="img2"></span>
+            <i>我的</i>
+        </a>
 </div>
 <!--fixft结束--> 

@@ -19,11 +19,10 @@ namespace WeShop.EFModel
         [Column(TypeName = "text")]
         public string Body { get; set; }
 
-        [StringLength(50)]
-        public string State { get; set; }
+        public bool? State { get; set; }
 
-        [StringLength(50)]
-        public string Rate { get; set; }
+        [Column(TypeName = "numeric")]
+        public decimal? Rate { get; set; }
 
         public DateTime? CreateTime { get; set; }
 

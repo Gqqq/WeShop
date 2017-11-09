@@ -1,0 +1,30 @@
+﻿
+@model WeShop.WeXin.Models.HomeViewModel
+@{
+    ViewBag.Title = "公告";
+    Layout = "~/Views/_LayoutMaster.cshtml";
+}
+
+<div class="ftop">
+    <a class="back" onClick="javascript:history.back(-1);"><img src="~/Content/images/icon_03.png"></a>
+    <h2>最新公告</h2>
+    <a class="comea">&nbsp;</a>
+    <div style="clear: both;"></div>
+</div>
+<!--ftop开始-->
+<div class="notice">
+    <ul>
+        @foreach (var gonggao in Model.Notices)
+        {
+            <li>
+                <a href="@Url.Action("GongGao_xq","Home",new {gonggaoId=gonggao.Id})">
+                    <h2>
+                        <span>@gonggao.Title</span><i>@gonggao.ModiTime.Value.Year.@gonggao.ModiTime.Value.Month.@gonggao.ModiTime.Value.Day</i>
+                    </h2>
+                    <p>@gonggao.Body</p>
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+

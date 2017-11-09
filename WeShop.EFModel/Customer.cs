@@ -24,12 +24,18 @@ namespace WeShop.EFModel
         public string OpenId { get; set; }
 
         [Required]
-        [StringLength(11)]
-        public string Phone { get; set; }
+      
+        public string Photo { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Address { get; set; }
+
+        [StringLength(50)]
+        public string Name { get; set; }
+
+        [StringLength(50)]
+        public string Role { get; set; }
 
         public DateTime CreateTime { get; set; }
 

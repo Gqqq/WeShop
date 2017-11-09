@@ -44,7 +44,7 @@ namespace WeShop.EFModel
                 .IsUnicode(false);
 
             modelBuilder.Entity<Customer>()
-                .Property(e => e.Phone)
+                .Property(e => e.Photo)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Customer>()
@@ -167,6 +167,10 @@ namespace WeShop.EFModel
                 .Property(e => e.ProCode)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<ProPhoto>()
+                .Property(e => e.ImgUrl)
+                .IsUnicode(false);
+
             modelBuilder.Entity<ProReview>()
                 .Property(e => e.ProCode)
                 .IsUnicode(false);
@@ -174,6 +178,10 @@ namespace WeShop.EFModel
             modelBuilder.Entity<ProReview>()
                 .Property(e => e.Body)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<ProReview>()
+                .Property(e => e.Rate)
+                .HasPrecision(10, 1);
 
             modelBuilder.Entity<ShoppingCart>()
                 .Property(e => e.ProCode)

@@ -1,6 +1,6 @@
 ﻿@model WeShop.WeXin.Models.HomeViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "首页";
     Layout = "~/Views/_LayoutNav.cshtml";
 }
 
@@ -9,12 +9,12 @@
     <div class="index_search">
         <input onclick="document.location = 'search.html'" type="text" placeholder="请输入您要搜索的产品">
         <p>
-            <a href="gonggao.html">
+            <a href=@Url.Action("GongGao","Home")>
                 <img src="~/Content/images/icon_05.png"><sup>@Model.NoticeNum</sup>
             </a>
         </p>
     </div>
-    <div style="clear: both;"></div>
+    <div style="clear: both;"></div>.
 </div>
 <!--ftop开始-->
 <!--banner start-->
@@ -39,7 +39,7 @@
         <div class="swiper-wrapper">
             @foreach (var notice in Model.Notices)
             {
-                <a class="swiper-slide" href="#@notice.Id">
+                <a class="swiper-slide" href="@Url.Action("GongGao_xq","Home",new { gonggaoId=notice.Id})">
                     <i>最新</i>@notice.Title</a>
             }
 
@@ -49,14 +49,15 @@
 
 <div class="index_main">
     <p class="index_mtitle">
-        <a class="on" href="#">热销</a> <a href="#">推荐</a> <a href="index_xianshi.html">限时</a>
+        <a class="on" href="#">热销</a> <a href="#">推荐</a> <a href="#">限时</a>
     </p>
     <ul>
         @foreach (var product in Model.Products)
         {
             <li>
-                <a href="#@product.Code">
-                    <img src="@product.ProPhotoes.First().ImgUrl">
+                <a href="@Url.Action("Index","ProDetail",new {prodetailCode=product.Code})">
+                    
+                    <img src="@product.ProPhotoes.First().ImgUrl.Split(',')[0]">
                 </a>
                 <div class="product_text">
                     <h2>
@@ -75,7 +76,7 @@
                                 <span>@tag.Name</span>
                             }
                         </p>
-                        <a href="product_xq.html">立即购买</a>
+                        <a href="#">立即购买</a>
                     </h3>
                 </div>
             </li>

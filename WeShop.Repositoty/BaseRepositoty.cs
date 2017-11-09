@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using WeShop.EFModel;
@@ -26,7 +27,7 @@ namespace WeShop.Repositoty
 
         public void Insert(TEntity tEntity)
         {
-            _dbSet.Add(tEntity);
+            _dbSet.AddOrUpdate(tEntity);
         }
 
         public TEntity QueryEntity(Func<TEntity, bool> whereLambda)

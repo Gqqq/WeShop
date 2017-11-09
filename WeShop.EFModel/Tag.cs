@@ -15,6 +15,7 @@ namespace WeShop.EFModel
             Products = new HashSet<Product>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [Required]
