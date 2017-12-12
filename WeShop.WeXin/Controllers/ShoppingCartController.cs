@@ -17,8 +17,9 @@ namespace WeShop.WeXin.Controllers
         // GET: ShopingCart
         public ActionResult Index()
         {
-            var homeViewModel = new HomeViewModel();
-            homeViewModel.Products = ProductService.GetEntities(n => true);
+            HomeViewModel homeViewModel = new HomeViewModel();
+            int cid = Convert.ToInt32(Session["Id"]);
+            homeViewModel.ShoppingCarts = ShoppingCartService.GetEntities(c=>c.CusId==cid);
             return View(homeViewModel);
         }
 
@@ -59,10 +60,19 @@ namespace WeShop.WeXin.Controllers
             }
         }
 
-        public ActionResult Delete(HomeViewModel homeViewModel)
+        public ActionResult Delete()
         {
-
-            return View();
+            string pcode = Request["cod"].ToString();
+            int id = Convert.ToInt32(Session["Id"]);
+            var cart = ShoppingCartService.GetEntity(p => p.ProCode == pcode && p.CusId == id);
+            if (ShoppingCartService.Remove(cart))
+            {
+                return Json(new {code = 200});
+            }
+            else
+            {
+                return Json(new {code = 400});
+            }
         }
     }
 }

@@ -12,17 +12,20 @@
 <!--ftop开始-->
 <div class="shopcar">
     <ul>
-        @foreach (var product in Model.Products)
+        @foreach (var shopcar in Model.ShoppingCarts)
         {
             <li>
                 <p>
-                    <label><input type="checkbox"></label><a href="#"><img src="@product.ProPhotoes.First().ImgUrl.Split(',')[0]"></a>
+                    <label><input type="checkbox"></label><a href="#"><img src="@shopcar.Product.ProPhotoes.First().ImgUrl.Split(',')[0]"></a>
                 </p>
                 <div class="shop_car">
-                    <a href="#">@product.Name</a>
+                    <a href="#">@shopcar.Product.Name</a>
                     <span>规格：500g/袋</span>
                     <div class="shu">
-                        <span class="jian"><img src="/Content/images/icon_016.png"></span><input class="shopcart-td-num" type="text" value="1" /><span class="jia"><img src="/Content/images/icon_017.png"></span><a><i>￥</i><b>@product.SellPrice</b></a>
+                        <span class="jian"><img src="/Content/images/icon_016.png"></span>
+                        <input class="shopcart-td-num" type="text" value="1"/>
+                        <span class="jia"><img src="/Content/images/icon_017.png"></span>
+                        <a><i>￥</i><b>@shopcar.Product.SellPrice</b></a>
                     </div>
                 </div>
                 <img class="delete" src="/Content/images/icon_030.png">
@@ -48,6 +51,31 @@
 </div>
 @section Script
 {
+@*删除商品*@
+<script>
+        $(".delete").click(function() {
+            var that = this;
+            $(".sure").click(function() {
+                var cod = $(".cod").val();
+                $.ajax({
+                    url: '@Url.Action("Delete", "ShoppingCart")',
+                    type: 'post',
+                    data: { cod: cod },
+                    success: function(data) {
+                        if (data.code == 200) {
+                            $(that).parent("li").remove();
+                            if ($('.shopcar').find('li').length > 0) {
+                            } else {
+                                $(".shopcar_null").css("display", "block");
+                            }
+                        } else {
+                            $(".shopcar_null").css("display", "block");
+                        }
+                    }
+                })
+            })
+        })
+</script>
 <script>
 	$(function(){
         var jian = $(".jian");
@@ -115,8 +143,6 @@
 		$(".ftop .all").click(function(){
              $(".shopcar ul li .delete").toggle();
 		})
-
-
 
 		$(".shopcar ul li .delete").click(function(){
 			$(".block_bg,.delete_box").fadeIn();
